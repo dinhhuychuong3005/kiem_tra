@@ -5,10 +5,71 @@
     <title>Title</title>
 </head>
 <body>
-<table>
-    <tr>
-    <th></th>
-    </tr>
-</table>
+<button onclick="add()">Add</button>
+<table id="kh" border="1px"></table>
+<script>
+    class Person {
+        constructor(_id, _name, _date, _sex, _address) {
+            this.id = _id;
+            this.name = _name;
+            this.date = _date;
+            this.sex = _sex;
+            this.address = _address;
+        }
+    }
+
+    let obj1 = new Person(1, 'nguyenvana', '12-5-1999', 'nam', 'namdinh');
+    let obj2 = new Person(2, 'nguyenvanb', '1-2-1999', 'nam', 'namdinh');
+    let persons = [obj1, obj2];
+
+    function add() {
+        let id = prompt('nhap vao id');
+        let name = prompt('nhap vao họ và tên');
+        let date = prompt('nhap vao ngày sinh');
+        let sex = prompt('nhap vao giới tính');
+        let address = prompt('nhap vao địa chỉ');
+        let person = new Person(id, name, date, sex, address);
+        persons.push(person);
+        display();
+    }
+
+    function display() {
+        let str = '';
+        for (let i = 0; i < persons.length; i++) {
+            str += '<tr>';
+            str += '<td>' + persons[i].id + '</td>';
+            str += '<td>' + persons[i].name + '</td>';
+            str += '<td>' + persons[i].date + '</td>';
+            str += '<td>' + persons[i].sex + '</td>';
+            str += '<td>' + persons[i].address + '</td>';
+            str += '<td><button onclick="showFromEdit(' + i + ')">Edit</button></td>'
+            str += '<td><button onclick="deleteProduct(' + i + ')">Delete</button></td>'
+            str += '</tr>'
+        }
+        document.getElementById('kh').innerHTML = str
+    }
+
+    display();
+
+    function deleteProduct(inDex) {
+        persons.splice(inDex, 1);
+        display();
+    }
+
+    function showFromEdit(i) {
+        let a = prompt('nhap id');
+        let b = prompt('nhap họ và tên');
+        let c = prompt('nhập ngày sinh');
+        let d = prompt('nhập giới tính');
+        let e = prompt('nhập địa chỉ');
+        persons[i].id = a;
+        persons[i].name = b;
+        persons[i].date = c;
+        persons[i].sex = d;
+        persons[i].address = e;
+        display();
+
+    }
+</script>
 </body>
 </html>

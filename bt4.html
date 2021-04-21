@@ -6,10 +6,13 @@
 </head>
 <body>
 <script>
-    let so_dong = prompt("Nhập số dòng")
-    for (i=0 ; i<so_dong ; i++){
-        document.write("<hr width = " + i + "%" + "height = 5%>");
+    function tam_giac(n){
+        for (let i = 1;i<n;i++){
+            document.write('<hr style="color: red" width=' + (5 *i) + '% >');
+        }
     }
+    let n = +prompt("Nhập số dòng")
+    tam_giac(n);
 </script>
 </body>
 </html>
