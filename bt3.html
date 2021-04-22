@@ -6,31 +6,36 @@
 </head>
 <body>
 <script>
-    let arr = [1, 3, 5, 6, 8, 9, 15, 16, 28, 25];
-    function check(num){
-        let sum = 0;
-        for (let i = 0;i<num;i++){
-            if (num % i == 0){
+    function checkPerfectNumber(number) {
+        let sum = 0
+        if (number <= 0){
+            return false
+        }
+        for (let i = 1; i < number; i++) {
+            if (number % i == 0) {
                 sum += i;
             }
         }
-        if (sum == num){
-            return true;
-        }else {
-            return false;
-        }
+        if (sum == number) {
+            return true
+        } return false;
     }
-    function checkHam(arr){
-        for (let i = 0 ; i<arr.length;i++){
-            if (check(arr[i]) == true){
-                document.write('so hoàn hảo ' + arr[i] + 'ở vị trí ' + i + '<br>');
-            }
+
+    let arr = [1, 3, 5, 6, 8, 9, 15, 16, 28, 25];
+function findIndex(arr){
+    let index = [];
+    for (let i = 0;i<arr[i];i++){
+        if (checkPerfectNumber(arr[i])){
+            index.push(i);
         }
-        if (check(arr[i]) == false){
-            document.write('không có số hoàn hảo trong mảng' + '<br>')
-        }
-    }
-    document.write(checkHam(arr))
+    }return index
+}
+let index = findIndex(arr);
+if (index.length == 0){
+    alert('không có số hoàn hảo trong mảng')
+}else {
+    document.write('vị trí các số hoàn hảo trong mảng là '+ index)
+}
 </script>
 </body>
 </html>
